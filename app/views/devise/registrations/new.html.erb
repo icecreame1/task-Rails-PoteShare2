@@ -1,0 +1,44 @@
+<div class="box mx-auto mt-6">
+  <h1 class="title is-5">新しいアカウントを作成</h1>
+
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "shared/error", obj: resource %>
+
+    <div class="field">
+      <div class="label">
+        <%= f.label :user_name %><span class="tag is-danger ml-3">必須</span>
+      </div>
+        <%= f.text_field :user_name, autofocus: true, autocomplete: "user_name", :placeholder => "ユーザ名", class:"input" %>
+    </div>
+
+    <div class="field">
+      <div class="label">
+        <%= f.label :email %><span class="tag is-danger ml-3">必須</span>
+      </div>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", :placeholder => "メールアドレス", class:"input" %>
+    </div>
+
+    <div class="field">
+      <div class="label">
+        <%= f.label :password %>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> 文字以上)</em><span class="tag is-danger ml-3">必須</span>
+        <% end %>
+      </div>
+      <%= f.password_field :password, autocomplete: "new-password", :placeholder => "パスワード", class:"input" %>
+    </div>
+
+    <div class="field">
+      <div class="label">
+        <%= f.label :password_confirmation %><span class="tag is-danger ml-3">必須</span>
+      </div>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", :placeholder => "パスワード確認", class:"input" %>
+    </div>
+
+    <div class="actions mb-3 has-text-centered">
+      <%= f.submit "新しいアカウントを作成", class:"button is-link px-6 mt-3" %>
+    </div>
+  <% end %>
+</div>
+
+<!--<%= render "devise/shared/links" %>-->

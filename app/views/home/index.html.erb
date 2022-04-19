@@ -1,0 +1,28 @@
+<section class="hero is-halfheight mb-6" style="background-image: url('https://presite-potepancamp-rails-02.herokuapp.com/assets/img_cover_top.jpg')">
+  <div class="hero-body">
+    <div class="container">
+      <form class="box">
+        <p class="title">Potepan Shareでまだ体験したことのない旅をしよう</p>
+
+        <p class="label">エリア</p>
+          <%= search_form_for @q, url: search_rooms_path do |f| %>
+            <%= f.search_field :address_cont, placeholder: "東京", id:"top-search"%><br>
+            <%= f.submit "探す", id:"top-submit" %>
+          <% end %>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="section mx-6 px-2 py-0">
+  <h1 class="title is-4 px-6">おすすめのエリア</h1>
+
+  <div class="columns has-text-centered mb-3 px-6">
+    <% @suggest_area.each do |key, value| %>
+      <div class="column is-3">
+        <span class="is-size-5"><%= value %></span>
+        <%= link_to image_tag("#{key}.jpeg", class:"picture"), search_rooms_path(q: {address_cont: "#{value}"}), class:"image is-4by5 mt-1" %>
+      </div>
+    <% end %>
+  </div>
+</section>
